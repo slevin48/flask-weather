@@ -5,7 +5,7 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route("/weather/", methods=['POST'])
+@app.route("/", methods=['POST'])
 def get_weather():
     # Dummy get weather message
     weather_message = "Sunny"
