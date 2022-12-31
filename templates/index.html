@@ -60,20 +60,22 @@
         </header>
         <article>
             <p>Get weather in your area.</p>
-                <form action="/" method="post">
-                Location: &nbsp;  
-                <input type="text" id="location_input" value="London, UK" style="font-size: 15px; width: 150px; height: 30px;"><br>
+                <form method="post">
+                City | Country: &nbsp;  
+                <input type="text" name="city" value="London" style="font-size: 15px; width: 150px; height: 30px;">
+                <input type="text" name="country" value="UK" style="font-size: 15px; width: 50px; height: 30px;"><br>
                     <br>
-                <input name="weatherBtn" type="submit" value=" Submit " style="border: none; border-radius: 12px; background-color: #FED8B1; font-size: 15px; width: 100px; height: 40px;"/>
+                <input type="submit" value=" Submit " style="border: none; border-radius: 12px; background-color: #FED8B1; font-size: 15px; width: 100px; height: 40px;"/>
 
                 </form>
                 
                 <br>
                 <br>
             <div id="results">
-                Current temperature: 
-                {{weather_message}}°C
-
+                {% if results %}
+                    Current temperature: 
+                    {{ results }}°C
+                {% endif %}
             </div>
     </div>
 
