@@ -51,6 +51,8 @@
   }
 </style>
 
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
 </head>
 <body>
 
@@ -62,22 +64,28 @@
             <p>Get weather in your area.</p>
                 <form method="post">
                 City | Country: &nbsp;  
-                <input type="text" name="city" value="London" style="font-size: 15px; width: 150px; height: 30px;">
-                <input type="text" name="country" value="UK" style="font-size: 15px; width: 50px; height: 30px;"><br>
+                <input type="text" name="city" value="Muenchen" style="font-size: 15px; width: 150px; height: 30px;" readonly="readonly" >
+                <input type="text" name="country" value="DE" style="font-size: 15px; width: 50px; height: 30px;" readonly="readonly" ><br>
                     <br>
                 <input type="submit" value=" Submit " style="border: none; border-radius: 12px; background-color: #FED8B1; font-size: 15px; width: 100px; height: 40px;"/>
-
+                    (read only form)
                 </form>
                 
                 <br>
                 <br>
-            <div id="results">
-                {% if results %}
-                    Current temperature: 
-                    {{ results }}°C
-                {% endif %}
-            </div>
+            
+            <div id="plot"></div>
+            
+            
     </div>
 
+    {% if plot %}
+    <script>
+        var json_string = {{ plot|tojson }};
+        var data = JSON.parse(json_string);
+        Plotly.newPlot('plot', data);
+        // console.log(data)
+    </script>
+    {% endif %}
 </body>
 </html>

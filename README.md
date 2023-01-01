@@ -17,3 +17,5 @@ flask run
 ```
 
 Running Flask locally on http://127.0.0.1:5000/
+
+![weather_app](weather_app.png)
